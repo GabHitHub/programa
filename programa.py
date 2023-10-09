@@ -3,7 +3,10 @@ from tkinter import messagebox
 
 import openpyxl
 
-def save_data_to_excel(data, filename):
+nombreArchivo = "miExcel"
+
+
+def crearExcel(data, filename):
   """Guarda los datos en una planilla de Excel.
 
   Args:
@@ -23,11 +26,14 @@ def save_data_to_excel(data, filename):
 
   # Guarda el libro de trabajo.
   wb.save(filename)
+
 def guardar_datos():
     nombreProducto = entry_nombreProducto.get()
     codigoProducto = entry_codigoProducto.get()
     fechaEntrega = entry_fechaEntrega.get()
     cantidad = entry_cantidad.get()
+
+    datos = nombreProducto, codigoProducto, fechaEntrega, cantidad
    
     #Obligatoriedad de datos en campos
     if len(nombreProducto) == 0 or len(codigoProducto)==0 or len(fechaEntrega)==0 or len(cantidad)==0:
@@ -35,7 +41,8 @@ def guardar_datos():
                
     else :
          messagebox.showinfo("Correcto", f"Guardado: {nombreProducto} - {fechaEntrega} - {codigoProducto} - {cantidad} en el inventario")
-              
+         crearExcel(datos, nombreArchivo)
+
 def limpiar_campos():
     entry_nombreProducto.delete(0, tk.END)
     entry_codigoProducto.delete(0, tk.END)
@@ -79,4 +86,6 @@ boton_limpiar = tk.Button(root, text="Limpiar Campos", command=limpiar_campos)
 boton_limpiar.pack()
 
 root.mainloop()
+
+
 

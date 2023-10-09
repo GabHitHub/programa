@@ -1,0 +1,5 @@
+
+#1 Primera subida, Gabriel
+
+#2 correcion guardar excel, crea uno nuevo. Necesita parametros de entrada, se define nombre de archivo global
+y datos local (para cada ejecucion).
